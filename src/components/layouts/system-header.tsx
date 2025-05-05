@@ -19,7 +19,7 @@ function SystemHeader() {
   };
 
   return (
-    <header className="h-[100px] header-shadow w-full bg-white border-b border-border">
+    <header className="h-[100px] header-shadow w-full bg-white border-b border-border sticky top-0 left-0 z-[99999]">
       <div className="layout-standard h-full flex items-center justify-between">
         <Link href={"/"} passHref>
           <Image

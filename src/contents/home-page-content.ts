@@ -14,7 +14,7 @@ import LegalTeamImg13 from "../../public/images/legal-team-img-13.jpg";
 import LegalTeamImg14 from "../../public/images/legal-team-img-14.jpg";
 import LegalTeamImg15 from "../../public/images/legal-team-img-15.jpg";
 
-export const ReviewsSectionData = [
+export const ReviewsSectionContent = [
   {
     id: 1,
     rating: 5,
@@ -65,7 +65,7 @@ export const ReviewsSectionData = [
   },
 ];
 
-export const LegalTeamData = [
+export const LegalTeamContent = [
   {
     img: LegalTeamImg01,
     name: "James McAllen",

@@ -62,7 +62,7 @@ const SystemProgressBar = () => {
                 </div>
                 <p
                   className={cn(
-                    "text-base text-heading font-semibold font-lato",
+                    "text-base text-heading font-bold font-lato",
                     stepState === "active" ? "text-primary" : "text-black/20"
                   )}
                 >

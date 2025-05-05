@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 
-import { LegalTeamData } from "@/contents/home-page";
+import { LegalTeamContent } from "@/contents/home-page-content";
 
 import DotsLine from "@/components/partials/dots-line";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
@@ -60,7 +60,7 @@ function LegalTeamSection() {
         className="w-full"
       >
         <CarouselContent>
-          {LegalTeamData.map((data, index) => (
+          {LegalTeamContent.map((data, index) => (
             <CarouselItem
               key={index}
               className="md:basis-1/2 lg:basis-1/4 basis-full"

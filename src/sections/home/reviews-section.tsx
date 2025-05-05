@@ -1,6 +1,6 @@
 import React from "react";
 
-import { ReviewsSectionData } from "@/contents/home-page";
+import { ReviewsSectionContent } from "@/contents/home-page-content";
 
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -23,7 +23,7 @@ export default function ReviewsSection() {
           <CarouselNext className="text-gray-600 hover:text-primary-foreground max-md:hidden" />
 
           <CarouselContent className="flex">
-            {ReviewsSectionData.map((testimonial) => (
+            {ReviewsSectionContent.map((testimonial) => (
               <CarouselItem
                 key={testimonial.id}
                 className="pl-1 w-full md:basis-1/2 lg:basis-1/3"

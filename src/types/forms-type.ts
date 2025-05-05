@@ -20,7 +20,3 @@ export type TrademarkRevivalStep03FormType = z.infer<
 export type TrademarkRevivalStep04FormType = z.infer<
   typeof TrademarkRevivalStep04FormSchema
 >;
-
-export type CloudinaryUploadWidgetType = {
-  open: () => void;
-};
