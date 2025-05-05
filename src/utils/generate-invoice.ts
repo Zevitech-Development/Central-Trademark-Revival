@@ -148,11 +148,12 @@ export const GenerateInvoice = async (
     },
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  /* eslint-disable @typescript-eslint/no-explicit-any */
   const finalY =
     (doc as any)?.lastAutoTable?.finalY != null
       ? (doc as any).lastAutoTable.finalY + 10
       : 125;
+  /* eslint-enable @typescript-eslint/no-explicit-any */
 
   // TOTAL SECTION
   doc.setFontSize(12);
