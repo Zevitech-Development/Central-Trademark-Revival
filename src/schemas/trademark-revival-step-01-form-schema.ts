@@ -19,7 +19,7 @@ export const TrademarkRevivalStep01FormSchema = z.object({
   zipCode: ZipCodeSchemaValidator,
   emailAddress: EmailSchemaValidator,
   phoneNumber: PhoneNumberSchemaValidator,
-  landlineNumber: PhoneNumberSchemaValidator.optional(),
+  landlineNumber: z.string().optional(),
   prefferedContactTime: z
     .string()
     .optional()

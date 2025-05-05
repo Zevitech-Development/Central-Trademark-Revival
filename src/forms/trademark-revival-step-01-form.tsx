@@ -21,7 +21,7 @@ import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 
 import { SetStepCompletionCookie } from "@/utils/cookie-utils";
-import { GenerateSerialNumber } from "@/utils/serial-number-generator";
+import { SerialNumberGenerator } from "@/utils/serial-number-generator";
 
 import { LoaderCircle } from "lucide-react";
 import { FaCircleCheck, FaCircleXmark } from "react-icons/fa6";
@@ -57,7 +57,7 @@ function TrademarkRevivalStep01Form() {
   const form = useForm({
     resolver: zodResolver(TrademarkRevivalStep01FormSchema),
     defaultValues: {
-      formId: GenerateSerialNumber({
+      formId: SerialNumberGenerator({
         prefix: "REG",
         length: 10,
         includeTimestamp: true,
