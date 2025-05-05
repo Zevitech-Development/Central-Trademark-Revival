@@ -15,6 +15,8 @@ export const GenerateInvoice = async (
   customerData: TrademarkRevivalStep01FormType
 ): Promise<string> => {
   const doc = new jsPDF();
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (doc as any).autoTable = autoTable;
 
   try {
@@ -99,8 +101,8 @@ export const GenerateInvoice = async (
 
   // PAID WATERMARK
   doc.setFontSize(60);
-  doc.setTextColor(0, 0, 0, 0.05); 
-  doc.setFont("helvetica", "bold"); 
+  doc.setTextColor(0, 0, 0, 0.05);
+  doc.setFont("helvetica", "bold");
   doc.text("PAID", 160, 80, { angle: 45 });
 
   // RESET TEXT COLOR
@@ -146,6 +148,7 @@ export const GenerateInvoice = async (
     },
   });
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const finalY =
     (doc as any)?.lastAutoTable?.finalY != null
       ? (doc as any).lastAutoTable.finalY + 10

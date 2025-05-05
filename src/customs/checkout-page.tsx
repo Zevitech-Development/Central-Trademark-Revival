@@ -283,7 +283,7 @@ function CheckoutPage({ formId }: CheckoutPageInterface) {
                 <h3 className="font-medium mb-2">What happens next?</h3>
                 <p className="text-paragraph text-sm">
                   Once your payment is complete, our trademark specialists will
-                  begin processing your application. You'll receive a
+                  begin processing your application. You&apos;ll receive a
                   confirmation email with receipt and next steps within the next
                   24 hours.
                 </p>
