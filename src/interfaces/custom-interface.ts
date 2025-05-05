@@ -1,9 +1,3 @@
-export interface CheckoutFormPageInterface {
-  params: {
-    formId: string;
-  };
-}
-
 export interface CheckoutPageInterface {
   formId?: string;
 }

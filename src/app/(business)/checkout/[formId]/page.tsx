@@ -1,15 +1,19 @@
 import React from "react";
 import { Metadata } from "next";
 
-import { CheckoutFormPageInterface } from "@/interfaces/custom-interface";
+import { CheckoutPageInterface } from "@/interfaces/custom-interface";
 
 import CheckoutPage from "@/customs/checkout-page";
 
 import { GetPageMetadata } from "@/utils/meta-data";
 
-export const generateMetadata = ({
-  params,
-}: CheckoutFormPageInterface): Metadata => {
+type CheckoutPageProps = {
+  params: {
+    formId: string;
+  };
+};
+
+export const generateMetadata = ({ params }: CheckoutPageProps): Metadata => {
   return GetPageMetadata({
     title: `Checkout #${params.formId} | Finalize Your Trademark Revival - Central Trademark Revival®`,
     description:
@@ -17,7 +21,7 @@ export const generateMetadata = ({
   });
 };
 
-function Checkout({ params }: CheckoutFormPageInterface) {
+function Checkout({ params }: CheckoutPageProps) {
   const { formId } = params;
 
   return <CheckoutPage formId={formId} />;
