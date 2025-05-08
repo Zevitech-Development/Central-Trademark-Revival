@@ -1,15 +1,14 @@
-import React from "react";
 import { Metadata } from "next";
 
 import CheckoutPage from "@/customs/checkout-page";
 
 import { GetPageMetadata } from "@/utils/meta-data";
 
-type PageProps = {
+interface PageProps {
   params: {
     formId: string;
   };
-};
+}
 
 export async function generateMetadata({
   params,
@@ -21,7 +20,8 @@ export async function generateMetadata({
   });
 }
 
-export default function Checkout({ params }: PageProps): React.JSX.Element {
+export default async function Checkout({ params }: PageProps) {
   const { formId } = params;
+
   return <CheckoutPage formId={formId} />;
 }
