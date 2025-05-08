@@ -1,6 +1,6 @@
 import SystemHeader from "@/components/layouts/system-header";
 
-export default function RootLayout({
+export default function BusinessLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
