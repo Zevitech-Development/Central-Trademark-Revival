@@ -266,7 +266,7 @@ function CheckoutPage({ formId }: CheckoutPageInterface) {
                       clientId,
                       components: "buttons",
                       currency: "USD",
-                      disableFunding: "paylater",
+                      // disableFunding: "paylater", // -- In production
                     }}
                   >
                     <PayPalButtons
