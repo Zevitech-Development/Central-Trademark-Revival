@@ -15,6 +15,7 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
   });
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default async function Checkout({ params }: any) {
   const formId = params?.formId;
 
