@@ -21,7 +21,5 @@ export async function generateMetadata({
 }
 
 export default async function Checkout({ params }: PageProps) {
-  const { formId } = params;
-
-  return <CheckoutPage formId={formId} />;
+  return <CheckoutPage formId={params.formId} />;
 }
