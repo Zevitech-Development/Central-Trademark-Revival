@@ -27,11 +27,12 @@ import { FormatTime } from "@/utils/format-time";
 
 import { Download, Mail } from "lucide-react";
 import { FaCircleCheck, FaCircleXmark } from "react-icons/fa6";
+import { SendPaymentConfirmationEmails } from "@/services/email-service";
 
 const ThankyouPage = ({ referenceNumber }: ThankyouPageInterface) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isPdfGenerating, setIsPdfGenerating] = useState(false);
-  // const [isEmailSent, setIsEmailSent] = useState(false);
+  const [hasTriedSendingEmail, setHasTriedSendingEmail] = useState(false);
 
   const router = useRouter();
   const dispatch = useDispatch();
@@ -74,7 +75,32 @@ const ThankyouPage = ({ referenceNumber }: ThankyouPageInterface) => {
     };
 
     validateData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [invoiceData, referenceNumber, router]);
+
+  useEffect(() => {
+    const sendConfirmationEmails = async () => {
+      if (
+        invoiceData.isPaid &&
+        formData.step01Data &&
+        invoiceData.pdfUrl &&
+        !hasTriedSendingEmail
+      ) {
+        setHasTriedSendingEmail(true);
+        try {
+          await SendPaymentConfirmationEmails(
+            invoiceData,
+            formData.step01Data,
+            invoiceData.pdfUrl
+          );
+        } catch (error) {
+          console.error("Error sending confirmation emails:", error);
+        }
+      }
+    };
+
+    sendConfirmationEmails();
+  }, [formData.step01Data, invoiceData, hasTriedSendingEmail]);
 
   const handleDownloadReceipt = async (shouldDownload = true) => {
     try {
@@ -106,6 +132,19 @@ const ThankyouPage = ({ referenceNumber }: ThankyouPageInterface) => {
           description: "Your receipt has been downloaded successfully.",
           icon: <FaCircleCheck className="text-green-600" size={24} />,
         });
+      }
+
+      if (!hasTriedSendingEmail && formData.step01Data) {
+        setHasTriedSendingEmail(true);
+        try {
+          await SendPaymentConfirmationEmails(
+            invoiceData,
+            formData.step01Data,
+            pdfOutput
+          );
+        } catch (error) {
+          console.error("Error sending confirmation emails:", error);
+        }
       }
     } catch (error) {
       console.error("Error generating PDF:", error);

@@ -13,6 +13,8 @@ import { setStep01Data } from "@/store/slices/form-slice";
 import { TrademarkRevivalStep01FormType } from "@/types/forms-type";
 import { TrademarkRevivalStep01FormSchema } from "@/schemas/trademark-revival-step-01-form-schema";
 
+import { SendLeadNotificationEmail } from "@/services/email-service";
+
 import { Form } from "@/components/ui/form";
 import CustomSystemField from "@/components/common/custom-system-field";
 import CustomInput from "@/components/common/custom-input";
@@ -90,7 +92,7 @@ function TrademarkRevivalStep01Form() {
       SetStepCompletionCookie(1, data.formId);
 
       try {
-        // send email to admin for leads data
+        await SendLeadNotificationEmail(data);
       } catch (emailError) {
         console.error("Error sending lead email:", emailError);
       }

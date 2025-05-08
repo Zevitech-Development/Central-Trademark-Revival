@@ -15,6 +15,8 @@ import { ProtectionTypeEnum } from "@/enums/protection-type-enum";
 import { TrademarkRevivalStep02FormType } from "@/types/forms-type";
 import { RootState } from "@/types/store-types";
 
+import { SendStep2CompletionEmail } from "@/services/email-service";
+
 import {
   CustomDropdown01,
   CustomDropdown02,
@@ -42,6 +44,7 @@ function TrademarkRevivalStep02Form() {
   const [system01, setSystem01] = useState("");
   const [system02, setSystem02] = useState("");
   const [loading, setLoading] = useState(false);
+  const [logoUrl, setLogoUrl] = useState<string | null>(null);
 
   const router = useRouter();
   const dispatch = useDispatch();
@@ -101,6 +104,11 @@ function TrademarkRevivalStep02Form() {
   const isIndividuallyOwnedTrademark = watch("isIndividuallyOwnedTrademark");
   const isUSBasedOrganization = watch("isUSBasedOrganization");
 
+  const handleLogoUpload = (url: string) => {
+    setLogoUrl(url);
+    setValue("protectionLogo", url);
+  };
+
   const onSubmit = async (data: TrademarkRevivalStep02FormType) => {
     if (system01 || system02) {
       console.warn("Better Luck Next Time!");
@@ -124,7 +132,7 @@ function TrademarkRevivalStep02Form() {
       SetStepCompletionCookie(2, formId);
 
       try {
-        // add this data with step 1 and then send email of setp 1 and 2
+        await SendStep2CompletionEmail(step01Data, data, logoUrl || undefined);
       } catch (emailError) {
         console.error("Error sending follow-up email:", emailError);
       }
@@ -226,6 +234,7 @@ function TrademarkRevivalStep02Form() {
                 control={control}
                 name="protectionLogo"
                 label="Upload Your Logo"
+                onUploadSuccess={handleLogoUpload}
               />
             </>
           ) : protectionType === ProtectionTypeEnum.SLOGAN ? (
@@ -280,6 +289,7 @@ function TrademarkRevivalStep02Form() {
                 control={control}
                 name="protectionLogo"
                 label="Upload Your Logo"
+                onUploadSuccess={handleLogoUpload}
               />
             </>
           )}

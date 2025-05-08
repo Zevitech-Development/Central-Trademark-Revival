@@ -58,6 +58,7 @@ export interface CustomUploadInterface<T extends FieldValues> {
   control: Control<T>;
   name: Path<T>;
   label: string;
+  onUploadSuccess?: (url: string) => void;
 }
 
 export interface CustomCalendarInterface<T extends FieldValues> {

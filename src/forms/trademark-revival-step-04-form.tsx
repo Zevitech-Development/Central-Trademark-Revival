@@ -14,12 +14,15 @@ import { TrademarkRevivalStep04FormSchema } from "@/schemas/trademark-revival-st
 import { TrademarkRevivalStep04FormType } from "@/types/forms-type";
 import { RootState } from "@/types/store-types";
 
+import { SendPaymentPendingEmail } from "@/services/email-service";
+
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { Separator } from "@/components/ui/separator";
 import { CustomCheckbox02 } from "@/components/common/custom-checkboxes";
 
 import { IsStepCompleted, SetStepCompletionCookie } from "@/utils/cookie-utils";
+import { PackageDetailsGenerator } from "@/utils/package-details-generator";
 
 import { LoaderCircle } from "lucide-react";
 import { FaCircleCheck, FaCircleXmark } from "react-icons/fa6";
@@ -82,7 +85,14 @@ function TrademarkRevivalStep04Form() {
       SetStepCompletionCookie(4, formId);
 
       try {
-        // send email will all steps data to inform admin that client is about to pay
+        const packageType = step03Data.packageType;
+        const packageDetails = PackageDetailsGenerator(packageType);
+
+        await SendPaymentPendingEmail(
+          { formId, step01Data, step02Data, step03Data, step04Data: data },
+          packageDetails.name,
+          packageDetails.price
+        );
       } catch (emailError) {
         console.error("Error sending payment pending email:", emailError);
       }

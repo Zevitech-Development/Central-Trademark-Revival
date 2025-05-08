@@ -36,6 +36,7 @@ const CustomUpload = <T extends FieldValues>({
   control,
   name,
   label,
+  onUploadSuccess,
 }: CustomUploadInterface<T>) => {
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -73,6 +74,10 @@ const CustomUpload = <T extends FieldValues>({
           if (!error && result.event === "success" && result.info?.secure_url) {
             setPreviewUrl(result.info.secure_url);
             fieldOnChange(result.info.secure_url);
+
+            if (onUploadSuccess) {
+              onUploadSuccess(result.info.secure_url);
+            }
           }
         }
       );
@@ -86,6 +91,10 @@ const CustomUpload = <T extends FieldValues>({
   const handleRemoveImage = (fieldOnChange: (value: string | null) => void) => {
     setPreviewUrl(null);
     fieldOnChange(null);
+
+    if (onUploadSuccess) {
+      onUploadSuccess("");
+    }
   };
 
   return (
