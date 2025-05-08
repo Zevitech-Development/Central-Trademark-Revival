@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import { Lato, Roboto } from "next/font/google";
 
 import ReduxProvider from "@/providers/redux-provider";
@@ -48,6 +49,13 @@ export default function RootLayout({
         <ReduxProvider>
           {children}
           <Toaster />
+
+          {/* GOOGLE reCAPTCHA v3 --- STARTS */}
+          <Script
+            src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
+            strategy="afterInteractive"
+          />
+          {/* GOOGLE reCAPTCHA v3 --- ENDS */}
         </ReduxProvider>
       </body>
     </html>

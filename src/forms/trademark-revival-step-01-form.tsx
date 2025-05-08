@@ -28,6 +28,12 @@ import { SerialNumberGenerator } from "@/utils/serial-number-generator";
 import { LoaderCircle } from "lucide-react";
 import { FaCircleCheck, FaCircleXmark } from "react-icons/fa6";
 
+declare global {
+  interface Window {
+    grecaptcha: any;
+  }
+}
+
 function TrademarkRevivalStep01Form() {
   const [system01, setSystem01] = useState("");
   const [system02, setSystem02] = useState("");
@@ -88,6 +94,27 @@ function TrademarkRevivalStep01Form() {
     setLoading(true);
 
     try {
+      const token = await window.grecaptcha.execute(
+        process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!,
+        { action: "submit" }
+      );
+
+      const res = await fetch("/api/verify-recaptcha", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token }),
+      });
+
+      const captchaResult = await res.json();
+
+      if (!captchaResult.success || captchaResult.score < 0.5) {
+        toast.error("Captcha Failed", {
+          description: "Please try again — captcha verification failed.",
+          icon: <FaCircleXmark className="text-red-600" size={24} />,
+        });
+        return;
+      }
+
       dispatch(setStep01Data(data));
       SetStepCompletionCookie(1, data.formId);
 
@@ -230,9 +257,7 @@ function TrademarkRevivalStep01Form() {
           />
 
           {/* SUBMIT BUTTON */}
-          <div className="w-full flex items-center md:justify-between md:flex-row flex-col max-md:gap-4 max-md:mb-4">
-            <div>Google Captcha</div>
-
+          <div className="w-full flex items-center md:justify-end md:flex-row flex-col max-md:gap-4 max-md:mb-4">
             <Button
               className="md:w-[200px] w-full h-[55px] px-8 font-bold font-lato hover:bg-primary-hover text-base rounded-[0.5rem]"
               type="submit"
