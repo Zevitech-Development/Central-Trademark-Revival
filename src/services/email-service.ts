@@ -162,7 +162,7 @@ export const SendLeadNotificationEmail = async (
   `;
 
   return await SendEmail({
-    to: process.env.EMAIL_USER || "info@centraltrademarkrevival.com",
+    to: process.env.EMAIL_USER || "centraltrademarkrevival@gmail.com",
     subject,
     html,
   });
@@ -491,7 +491,7 @@ export const SendStep2CompletionEmail = async (
   `;
 
   return await SendEmail({
-    to: process.env.EMAIL_USER || "info@centraltrademarkrevival.com",
+    to: process.env.EMAIL_USER || "centraltrademarkrevival@gmail.com",
     subject,
     html,
   });
@@ -661,7 +661,7 @@ export const SendPaymentPendingEmail = async (
   `;
 
   return await SendEmail({
-    to: process.env.EMAIL_USER || "info@centraltrademarkrevival.com",
+    to: process.env.EMAIL_USER || "centraltrademarkrevival@gmail.com",
     subject,
     html,
   });
@@ -1065,7 +1065,7 @@ export const SendPaymentConfirmationEmails = async (
   `;
 
   const adminEmailSent = await SendEmail({
-    to: process.env.EMAIL_USER || "info@centraltrademarkrevival.com",
+    to: process.env.EMAIL_USER || "centraltrademarkrevival@gmail.com",
     subject: adminSubject,
     html: adminHtml,
     attachments: [pdfAttachment],
