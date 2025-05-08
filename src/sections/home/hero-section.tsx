@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Button } from "@/components/ui/button";
+import ClientButton from "@/components/ui/client-button";
 
 import { ArrowRight } from "lucide-react";
 
@@ -25,24 +26,17 @@ function HeroSection() {
         </p>
 
         <div className="max-md:w-full flex items-center gap-2 md:flex-row flex-col">
-          <Button
+          <ClientButton
             className="md:h-[55px] h-[45px] md:px-8 md:text-base text-sm w-full font-lato font-bold hover:bg-primary-hover"
-            onClick={() => {
-              if (
-                window.Tawk_API &&
-                typeof window.Tawk_API.maximize === "function"
-              ) {
-                window.Tawk_API.maximize();
-              } else {
-                window.open(
-                  "https://tawk.to/chat/681517dbc915a4190c8c0c5f/1iq96ad9l",
-                  "_blank"
-                );
-              }
-            }}
+            onClickHandler={() =>
+              window.open(
+                "https://tawk.to/chat/681517dbc915a4190c8c0c5f/1iq96ad9l",
+                "_blank"
+              )
+            }
           >
             Chat Now
-          </Button>
+          </ClientButton>
 
           <Button className="md:h-[55px] h-[45px] md:px-8 md:text-base text-sm w-full font-lato font-bold bg-secondary hover:bg-secondary-hover">
             Revive Now <ArrowRight />
