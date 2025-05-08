@@ -5,6 +5,7 @@ import { Lato, Roboto } from "next/font/google";
 import ReduxProvider from "@/providers/redux-provider";
 
 import { Toaster } from "@/components/ui/sonner";
+import TawkToChat from "@/components/common/tawkto-chat";
 
 import { GetPageMetadata } from "@/utils/meta-data";
 
@@ -49,6 +50,7 @@ export default function RootLayout({
         <ReduxProvider>
           {children}
           <Toaster />
+          <TawkToChat />
 
           {/* GOOGLE reCAPTCHA v3 --- STARTS */}
           <Script
