@@ -30,6 +30,7 @@ import { FaCircleCheck, FaCircleXmark } from "react-icons/fa6";
 
 declare global {
   interface Window {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     grecaptcha: any;
   }
 }
