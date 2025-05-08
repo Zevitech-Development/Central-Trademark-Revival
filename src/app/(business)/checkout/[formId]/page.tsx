@@ -5,13 +5,15 @@ import CheckoutPage from "@/customs/checkout-page";
 
 import { GetPageMetadata } from "@/utils/meta-data";
 
-type CheckoutPageProps = {
-  params: {
-    formId: string;
-  };
+type CheckoutParams = {
+  formId: string;
 };
 
-export const generateMetadata = ({ params }: CheckoutPageProps): Metadata => {
+export const generateMetadata = async ({
+  params,
+}: {
+  params: CheckoutParams;
+}): Promise<Metadata> => {
   return GetPageMetadata({
     title: `Checkout #${params.formId} | Finalize Your Trademark Revival - Central Trademark Revival®`,
     description:
@@ -19,10 +21,12 @@ export const generateMetadata = ({ params }: CheckoutPageProps): Metadata => {
   });
 };
 
-function Checkout({ params }: CheckoutPageProps) {
+export default function Checkout({
+  params,
+}: {
+  params: CheckoutParams;
+}): React.JSX.Element {
   const { formId } = params;
 
   return <CheckoutPage formId={formId} />;
 }
-
-export default Checkout;

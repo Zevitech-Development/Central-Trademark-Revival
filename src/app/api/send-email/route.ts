@@ -13,30 +13,30 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Gmail SMTP configuration
-    // For Gmail on port 587, secure should be false since it uses STARTTLS
+    // GMAIL SMTP CONFIGURATIONS
+    // const transporter = nodemailer.createTransport({
+    //   host: process.env.EMAIL_HOST || "smtp.gmail.com",
+    //   port: Number(process.env.EMAIL_PORT) || 587,
+    //   secure: false,
+    //   auth: {
+    //     user: process.env.EMAIL_USER,
+    //     pass: process.env.EMAIL_PASSWORD,
+    //   },
+    //   debug: true,
+    // });
+
+    // HOSTINGER SMTP CONFIGURATIONS
     const transporter = nodemailer.createTransport({
-      host: process.env.EMAIL_HOST || "smtp.gmail.com",
-      port: Number(process.env.EMAIL_PORT) || 587,
-      secure: false, // For Gmail on port 587, always use false (STARTTLS)
+      host: process.env.EMAIL_HOST || "smtp.hostinger.com",
+      port: Number(process.env.EMAIL_PORT) || 465,
+      secure: true,
       auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASSWORD,
       },
-      // Debug option to see detailed logs
-      debug: true,
+      debug: process.env.NODE_ENV === "development",
     });
 
-    // Log configuration for debugging
-    console.log("Email configuration:", {
-      host: process.env.EMAIL_HOST,
-      port: Number(process.env.EMAIL_PORT),
-      secure: false,
-      user: process.env.EMAIL_USER ? "Provided" : "Missing",
-      pass: process.env.EMAIL_PASSWORD ? "Provided" : "Missing",
-    });
-
-    // Send email
     const info = await transporter.sendMail({
       from: `Central Trademark Revival <${process.env.EMAIL_USER}>`,
       to,
