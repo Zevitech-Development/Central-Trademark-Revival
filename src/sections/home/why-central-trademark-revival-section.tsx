@@ -41,13 +41,6 @@ function WhyCentralTrademarkRevivalSection() {
             revival, ensuring your application gets back on track without
             unnecessary delays.
           </p>
-
-          <Link
-            className="text-secondary font-[500] text-sm hover:underline uppercase font-lato font-bold"
-            href={"/"}
-          >
-            Learn More
-          </Link>
         </div>
 
         <div className="grid grid-cols-1 md:gap-8 gap-4">
@@ -67,13 +60,6 @@ function WhyCentralTrademarkRevivalSection() {
             revival and work diligently to ensure your application gets back on
             track.
           </p>
-
-          <Link
-            className="text-secondary font-[500] text-sm hover:underline uppercase font-lato font-bold"
-            href={"/"}
-          >
-            Learn More
-          </Link>
         </div>
 
         <div className="grid grid-cols-1 md:gap-8 gap-4">
@@ -92,12 +78,6 @@ function WhyCentralTrademarkRevivalSection() {
             here to offer free consultations, helping you understand your
             options and make informed decisions.
           </p>
-          <Link
-            className="text-secondary font-[500] text-sm hover:underline uppercase font-lato font-bold"
-            href={"/"}
-          >
-            Learn More
-          </Link>
         </div>
       </div>
     </section>

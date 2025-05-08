@@ -216,7 +216,7 @@ function TrademarkRevivalStep02Form() {
                 <CustomInput
                   control={control}
                   name="protectionLogoColorScheme"
-                  label="What are the protetion logo color scheme?"
+                  label="What are the protection logo color scheme?"
                   placeholder="e.g., Red and White, Blue and Gray"
                 />
 
@@ -224,7 +224,7 @@ function TrademarkRevivalStep02Form() {
                 <CustomInput
                   control={control}
                   name="protectionLogoLiteralElements"
-                  label="What are the protetion logo literal elements?"
+                  label="What are the protection logo literal elements?"
                   placeholder="e.g., Nike, Apple."
                 />
               </div>
@@ -271,7 +271,7 @@ function TrademarkRevivalStep02Form() {
                 <CustomInput
                   control={control}
                   name="protectionLogoColorScheme"
-                  label="What are the protetion logo color scheme?"
+                  label="What are the protection logo color scheme?"
                   placeholder="e.g., Red, Blue, White."
                 />
 
@@ -279,7 +279,7 @@ function TrademarkRevivalStep02Form() {
                 <CustomInput
                   control={control}
                   name="protectionLogoLiteralElements"
-                  label="What are the protetion logo literal elements?"
+                  label="What are the protection logo literal elements?"
                   placeholder="e.g., Nike, Apple."
                 />
               </div>

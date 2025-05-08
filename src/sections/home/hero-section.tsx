@@ -1,11 +1,20 @@
+"use client";
+
 import React from "react";
+import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
-import ClientButton from "@/components/ui/client-button";
 
 import { ArrowRight } from "lucide-react";
 
 function HeroSection() {
+  const router = useRouter();
+
+  const handleNavigation = (path: string) => {
+    if (!path) return;
+    router.push(path);
+  };
+
   return (
     <section className="bg-home-hero lg:h-[800px] h-[650px] w-full bg-cover bg-no-repeat">
       <div className="layout-standard h-full flex-center gap-8 text-center flex-col">
@@ -26,20 +35,30 @@ function HeroSection() {
         </p>
 
         <div className="max-md:w-full flex items-center gap-2 md:flex-row flex-col">
-          <ClientButton
-            className="md:h-[55px] h-[45px] md:px-8 md:text-base text-sm w-full font-lato font-bold hover:bg-primary-hover"
-            onClickHandler={() =>
-              window.open(
-                "https://tawk.to/chat/681517dbc915a4190c8c0c5f/1iq96ad9l",
-                "_blank"
-              )
-            }
+          <Button
+            onClick={() => handleNavigation(`/trademark-revival/step-01`)}
+            className="md:h-[55px] h-[45px] md:px-8 md:text-base text-sm w-full font-lato font-bold bg-primary hover:bg-primary-hover"
+          >
+            Revive Now <ArrowRight />
+          </Button>
+
+          <Button
+            className="md:h-[55px] h-[45px] md:px-8 md:text-base text-sm w-full font-lato font-bold hover:bg-secondary-hover bg-secondary"
+            onClick={() => {
+              if (
+                window.Tawk_API &&
+                typeof window.Tawk_API.maximize === "function"
+              ) {
+                window.Tawk_API.maximize();
+              } else {
+                window.open(
+                  "https://tawk.to/chat/681517dbc915a4190c8c0c5f/1iq96ad9l",
+                  "_blank"
+                );
+              }
+            }}
           >
             Chat Now
-          </ClientButton>
-
-          <Button className="md:h-[55px] h-[45px] md:px-8 md:text-base text-sm w-full font-lato font-bold bg-secondary hover:bg-secondary-hover">
-            Revive Now <ArrowRight />
           </Button>
         </div>
       </div>
