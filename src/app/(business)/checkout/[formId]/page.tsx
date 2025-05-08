@@ -4,15 +4,11 @@ import CheckoutPage from "@/customs/checkout-page";
 
 import { GetPageMetadata } from "@/utils/meta-data";
 
-interface PageProps {
-  params: {
-    formId: string;
-  };
-}
-
 export async function generateMetadata({
   params,
-}: PageProps): Promise<Metadata> {
+}: {
+  params: { formId: string };
+}): Promise<Metadata> {
   return GetPageMetadata({
     title: `Checkout #${params.formId} | Finalize Your Trademark Revival - Central Trademark Revival®`,
     description:
@@ -20,6 +16,10 @@ export async function generateMetadata({
   });
 }
 
-export default async function Checkout({ params }: PageProps) {
+export default async function Checkout({
+  params,
+}: {
+  params: { formId: string };
+}) {
   return <CheckoutPage formId={params.formId} />;
 }
