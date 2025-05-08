@@ -1,8 +1,6 @@
 import React from "react";
 import { Metadata } from "next";
 
-import { CheckoutPageInterface } from "@/interfaces/custom-interface";
-
 import CheckoutPage from "@/customs/checkout-page";
 
 import { GetPageMetadata } from "@/utils/meta-data";
