@@ -8,6 +8,7 @@ import OurServicesSection from "@/sections/home/our-services-section";
 import LegalTeamSection from "@/sections/home/legal-team-section";
 import AchievementSection from "@/sections/home/achievement-section";
 import ReviewsSection from "@/sections/home/reviews-section";
+import PricingSection from "./pricing-section";
 
 function HomePage() {
   return (
@@ -16,6 +17,7 @@ function HomePage() {
       <AboutSection />
       <div className="page-layout-standard">
         <WhyCentralTrademarkRevivalSection />
+        <PricingSection />
         <WhatTrademarkRrevivalSection />
         <OurServicesSection />
         <LegalTeamSection />
