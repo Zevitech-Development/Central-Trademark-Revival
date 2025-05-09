@@ -32,11 +32,11 @@ function SystemHeader() {
 
         <div className="flex items-center gap-4">
           <Link
-            href="tel:+13104244909"
+            href="tel:+14083876783"
             className="text-heading hover:text-secondary flex items-center gap-2 font-lato"
           >
             <FaPhone />
-            <p className="font-semibold text-[14px]">(310) 424-4909</p>
+            <p className="font-semibold text-[14px]">(408) 387-6783</p>
           </Link>
 
           <Button

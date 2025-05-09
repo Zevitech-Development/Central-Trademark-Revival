@@ -6,7 +6,8 @@ import { Button } from "../ui/button";
 
 import Logo from "../../../public/favicons/logo.svg";
 import { LuMessageSquareText } from "react-icons/lu";
-import { Mail } from "lucide-react";
+import { IoMdPin, IoMdMail } from "react-icons/io";
+import { IoCall } from "react-icons/io5";
 
 const Footer = () => {
   return (
@@ -24,14 +25,45 @@ const Footer = () => {
               help you reclaim and protect your brand—every step of the way.
             </p>
 
-            <div className="flex items-center gap-2 text-blue-500 hover:underline">
-              <Mail size={18} />
-              <Link
-                href={`mailto:${process.env.NEXT_PUBLIC_SUPPORT_EMAIL}`}
-                className="text-sm"
-              >
-                {process.env.NEXT_PUBLIC_SUPPORT_EMAIL}
-              </Link>
+            <div className="flex flex-col gap-4">
+              <div className="flex items-center gap-2 text-primary hover:underline">
+                <IoCall size={18} className="text-heading" />
+                <Link href="tel:+14083876783" className="text-sm">
+                  +1 (408) 387-6783
+                </Link>
+              </div>
+
+              <div className="flex items-center gap-2 text-primary hover:underline">
+                <IoMdMail size={18} className="text-heading" />
+                <Link
+                  href={`mailto:${process.env.NEXT_PUBLIC_SUPPORT_EMAIL}`}
+                  className="text-sm"
+                >
+                  {process.env.NEXT_PUBLIC_SUPPORT_EMAIL}
+                </Link>
+              </div>
+
+              <div className="flex items-center gap-2 text-primary hover:underline">
+                <IoMdPin size={18} className="text-heading" />
+                <Link
+                  href={`https://www.google.com/maps?q=2121+Crystal+Dr,+Arlington,+VA+22202,+USA`}
+                  className="text-sm"
+                  target="_blank"
+                >
+                  2121 Crystal Dr, Arlington, VA 22202, USA
+                </Link>
+              </div>
+
+              <div className="flex items-start gap-2 text-primary hover:underline">
+                <IoMdPin size={18} className="text-heading" />
+                <Link
+                  href={`https://www.google.com/maps?q=1060+Lincoln+Ave,+Suite+20+%23+1071,+San+Jose,+CA+95125,+USA`}
+                  className="text-sm"
+                  target="_blank"
+                >
+                  1060 Lincoln Ave, Suite 20 #1071, San Jose, CA 95125, USA
+                </Link>
+              </div>
             </div>
           </div>
 
