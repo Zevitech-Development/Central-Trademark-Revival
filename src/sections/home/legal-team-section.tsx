@@ -91,16 +91,6 @@ function LegalTeamSection() {
                       >
                         Email Now
                       </Button>
-
-                      <Button
-                        type="button"
-                        className="font-bold font-lato hover:bg-secondary-hover bg-secondary"
-                        onClick={() => {
-                          mailHandler(data.email);
-                        }}
-                      >
-                        Call Now
-                      </Button>
                     </div>
                   </CardContent>
                 </Card>
